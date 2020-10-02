@@ -3,8 +3,10 @@ package tamagochipackage;
 import java.util.Scanner;
 
 public class MainScript {
+	
 	/**
-	 * 
+	 * function main who ask wich type of animals i want and create a object of my choice
+	 * (all my object inherit of my class Animals)
 	 *
 	 */
 	public static void main(String[] args) {
@@ -17,34 +19,29 @@ public class MainScript {
 		switch (sc.nextInt()) {
 		case 1:
 			Dragon myDragon = new Dragon();
-			myDragon.askInfo();
-			System.out.println(myDragon.getAppearance());
 			createMenu(myDragon);
 			break;
 
 		case 2:
 			Licorne myLicorne = new Licorne();
-			myLicorne.askInfo();
-			System.out.println(myLicorne.getAppearance());
 			createMenu(myLicorne);
 			break;
 		case 3:
 			Trolls myTrolls = new Trolls();
-			myTrolls.askInfo();
-			System.out.println(myTrolls.getAppearance());
 			createMenu(myTrolls);
 			break;
 		case 4:
-			Phenix myPhenix = new Phenix();
-			myPhenix.askInfo();
-			System.out.println(myPhenix.getAppearance());
+			Phoenix myPhenix = new Phoenix();
 			createMenu(myPhenix);
 			break;
 		}
 	}
 
 	public static <T extends Animals> void createMenu(T tamagotchi) {
-
+		
+		tamagotchi.askInfo();
+		System.out.println(tamagotchi.getAppearance());
+		
 		do {
 			if (tamagotchi.getEnergy() < 1) {
 
@@ -83,12 +80,20 @@ public class MainScript {
 					executeAction(action, tamagotchi);
 				}
 			}
-
-		} while (tamagotchi.getHealth() > 0);
+			if (tamagotchi.getHealth() < 1 && tamagotchi.isResurect()!=false ) {
+				System.out.println("Votre " + tamagotchi.getName() + " est mort.");
+				System.out.println("Mais ... que ce passe t-il ?");
+				System.out.println("Votre phoenix renait de ces cendres avec 5 pv ");
+				tamagotchi.setResurect(false);
+				tamagotchi.resurect();			
+			}
+		} while (tamagotchi.getHealth() > 0 && tamagotchi.isResurect()==false );
 
 		System.out.println("Adieu ...");
 		System.out.println("FATALITY");
 		System.out.println("Votre " + tamagotchi.getName() + " est mort.");
+		
+		
 	}
 
 	public static <T extends Animals> void executeAction(int userChoice, T t) {
