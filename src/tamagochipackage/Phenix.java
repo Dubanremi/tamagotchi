@@ -1,9 +1,13 @@
 package tamagochipackage;
 
 public class Phenix extends Animals{
+
+
+
 	public Phenix() {
-		int heighPhenix = 1 + (int) (Math.random() * (3));
-		this.setHeight(heighPhenix);
+		int heighPhenix = (int) (Math.random() * (20)+1);
+		double heightDoublePhenix = (double) heighPhenix / 10;
+		this.setHeight(heightDoublePhenix);
 		this.setHealth(8);
 	}
 	public void askInfo() {
@@ -11,8 +15,14 @@ public class Phenix extends Animals{
 		System.out.println("De quel couleurs est ma criniere ?");
 		this.setHairColor(sc.next());
 	}
-	public void showApparance() {
-		super.showApparance();
-		System.out.println("ma criniere est " + this.getHairColor());
+	public String getAppearance() {
+		
+		String appearance="\n je suis un phenix \n ma criniere est " + this.getHairColor();
+		return(super.getAppearance()+appearance);
+	}
+	
+	public void resurect()
+	{
+	
 	}
 }

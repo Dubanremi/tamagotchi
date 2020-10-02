@@ -2,7 +2,7 @@ package tamagochipackage;
 
 public class Dragon extends Animals{
 	public Dragon() {
-		int heighDragon = 10 + (int) (Math.random() * (20));
+		double heighDragon =  (int)(Math.random() * (20-10)+10);
 		this.setHeight(heighDragon);
 		this.setHealth(15);
 	}
@@ -11,9 +11,11 @@ public class Dragon extends Animals{
 		System.out.println("De quel couleurs sont mes écailles ?");
 		this.setHairColor(sc.next());
 	}
-	public void showApparance() {
-		super.showApparance();
-		System.out.println("mes écailles sont " + this.getHairColor());
+	public String getAppearance() {
+		String appearance ="\n je suis un dragon \n mes écailles sont " + this.getHairColor();
+
+		return(super.getAppearance()+appearance);
+
 	}
 
 }

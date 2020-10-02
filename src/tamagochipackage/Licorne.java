@@ -2,8 +2,9 @@ package tamagochipackage;
 
 public class Licorne extends Animals{
 	public Licorne() {
-		int heighLicorne = 1 + (int) (Math.random() * (4));
-		this.setHeight(heighLicorne);
+		int heighLicorne =  ((int) (Math.random() * (40)+10)) ;
+		double heightLicorneDouble = heighLicorne/10;
+		this.setHeight(heightLicorneDouble);
 		this.setHealth(8);
 	}
 	public void askInfo() {
@@ -11,9 +12,10 @@ public class Licorne extends Animals{
 		System.out.println("De quel couleurs est ma criniere ?");
 		this.setHairColor(sc.next());
 	}
-	public void showApparance() {
-		super.showApparance();
-		System.out.println("ma criniere est " + this.getHairColor());
+	public String getAppearance() {
+		String appearance = "\n je suis une licorne \n ma criniere est " + this.getHairColor();
+		return(super.getAppearance()+appearance);
+
 	}
 
 }

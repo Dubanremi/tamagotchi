@@ -2,17 +2,19 @@ package tamagochipackage;
 
 public class Trolls extends Animals{
 	public Trolls() {
-		int heighTrolls = 3 + (int) (Math.random() * (11));
-		this.setHeight(heighTrolls);
-		this.setHealth(8);
+		int heighTrolls = (int) (Math.random() * (100)+10);
+		double heighTrollsDouble= heighTrolls/10;
+		this.setHeight(heighTrollsDouble);
+		this.setHealth(12);
 	}
 	public void askInfo() {
 		super.askInfo();
 		System.out.println("De quel couleurs sont mes cheveux ?");
 		this.setHairColor(sc.next());
 	}
-	public void showApparance() {
-		super.showApparance();
-		System.out.println("mes cheveux " + this.getHairColor());
+	public String getAppearance() {
+		String appearance ="\n je suis un trolls \n mes cheveux " + this.getHairColor();
+		return(super.getAppearance()+appearance);
+
 	}
 }

@@ -5,21 +5,19 @@ import java.util.Scanner;
 public class Animals {
 	public Scanner sc = new Scanner(System.in);
 	private String name;
-	private int height;
+	private double height;
 	private String color;
 	private int lifeTime;
 	private String hairColor;
-	private int hunger=10;
-	private int wc=0;
-	private int energy=10;
+	private int hunger = 10;
+	private int wc = 0;
+	private int energy = 10;
 	private int humor;// 1=pas content,2= content,3= soulagé
-	private int health=10;
-	boolean masque=true;
-	boolean cleanliness=true;
-
+	private int health = 10;
+	boolean masque = true;
+	boolean cleanliness = true;
 
 	public Animals() {
-
 
 	}
 
@@ -40,14 +38,14 @@ public class Animals {
 	/**
 	 * @return the height
 	 */
-	public float getHeight() {
+	public double getHeight() {
 		return height;
 	}
 
 	/**
 	 * @param height the height to set
 	 */
-	public void setHeight(int height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 
@@ -76,7 +74,13 @@ public class Animals {
 	 * @param lifeTime the lifeTime to set
 	 */
 	public void setLifeTime(int lifeTime) {
+
 		this.lifeTime = lifeTime;
+		if (this.getLifeTime() == 0) {
+			this.setHealth(0);
+		}else if (this.getLifeTime()<5) {
+			System.out.println("Attention, il ne vous reste que "+this.getLifeTime()+" actions.");			
+		}
 	}
 
 	/**
@@ -105,9 +109,11 @@ public class Animals {
 	 */
 	public void setHunger(int hunger) {
 		this.hunger = hunger;
-		if (this.getHunger() < 10) {
+		if (this.getHunger() == 0) {
 			System.out.println("Je suis littéralement mort de faim .");
 			this.setHealth(0);
+		}else if (this.getHunger()<3) {
+			System.out.println("J'ai faim ");
 		}
 	}
 
@@ -123,6 +129,9 @@ public class Animals {
 	 */
 	public void setWc(int wc) {
 		this.wc = wc;
+		if (this.getWc()>6) {
+			System.out.println("Attention, je dois aller au toilette");
+		}
 	}
 
 	/**
@@ -137,6 +146,9 @@ public class Animals {
 	 */
 	public void setEnergy(int energy) {
 		this.energy = energy;
+		if (this.getEnergy()<4) {
+			System.out.println("Attention, je suis fatigué");
+		}
 	}
 
 	/**
@@ -165,7 +177,9 @@ public class Animals {
 	 */
 	public void setHealth(int health) {
 		this.health = health;
-
+		if (this.getHealth()<4) {
+			System.out.println("Attention, je n'ai presque plus de vie");
+		}
 
 	}
 
@@ -210,35 +224,28 @@ public class Animals {
 	}
 
 	public void eat() {
-		this.setHunger(0);
-		this.setWc(this.getWc() + 1);
+
+		this.setHunger(10);
 		this.setHealth(this.getHealth() + 1);
 		this.setHumor(2);
-		this.setLifeTime(this.getLifeTime() - 1);
-		System.out.println("");
-		System.out.println("J'ai bien manger");
-		System.out.println("");
-		action();
+		doAction(0, 0, 1);
 
 	}
 
+	/**
+	 * 
+	 */
 	public void goToToilet() {
-		this.setHunger(getHunger() + 1);
-		this.setWc(0);
-		this.setEnergy(getEnergy() - 1);
+
 		this.setHumor(3);
-		this.setLifeTime(this.getLifeTime() - 1);
-		action();
+		doAction(-1, -1, 0);
 
 	}
 
 	public void sleep() {
 		this.setEnergy(10);
-		this.setHunger(getHunger() + 1);
-		this.setWc(getWc() + 1);
 		this.setHumor(2);
-		this.setLifeTime(this.getLifeTime() - 1);
-		action();
+		doAction(0, -1, 1);
 
 	}
 
@@ -248,60 +255,45 @@ public class Animals {
 		do {
 			newHairColor = sc.next();
 		} while (newHairColor.getClass().equals("String"));
-		this.setHunger(getHunger() + 1);
-		this.setEnergy(getEnergy() - 1);
-		this.setWc(this.getWc() + 1);
 		this.setHairColor(newHairColor);
-		this.setLifeTime(this.getLifeTime() - 1);
-		action();
+		doAction(-1, -1, 1);
 
 	}
 
 	public void smoke() {
-		this.setEnergy(getEnergy() - 1);
-		this.setHunger(getHunger() + 1);
 		this.setHealth(getHealth() - 1);
-		this.setHunger(getHunger() + 1);
-		action();
+		doAction(-1, -2, 1);
+
 	}
 
 	public void haveSex() {
-		this.setEnergy(getEnergy() - 1);
-		this.setHunger(getHunger() + 1);
-		this.setWc(this.getWc() + 1);
+
 		this.setHumor(2);
 		this.setCleanliness(false);
-		this.setLifeTime(this.getLifeTime() - 1);
-		action();
+		doAction(-1, -1, 1);
 
 	}
 
 	public void hangOut() {
-		this.setEnergy(getEnergy() - 1);
-		this.setHunger(getHunger() + 1);
-		this.setWc(this.getWc() + 1);
+
 		this.setHumor(2);
-		this.setLifeTime(this.getLifeTime() - 1);
-		action();
+
+		doAction(-1, -1, 1);
 
 	}
 
 	public void workOut() {
-		this.setEnergy(getEnergy() - 1);
-		this.setHunger(getHunger() + 1);
-		this.setWc(this.getWc() + 1);
+
 		this.setHealth(getHealth() + 1);
 		this.setHumor(1);
 		this.setCleanliness(false);
-		this.setLifeTime(this.getLifeTime() - 1);
-		action();
+		doAction(-1, -1, 1);
 
 	}
 
 	public void corona() {
-		this.setEnergy(getEnergy() - 1);
-		this.setHunger(getHunger() + 1);
-		this.setWc(this.getWc() + 1);
+
+		doAction(-1, -1, +1);
 		if (this.isMasque() == true) {
 			this.setMasque(false);
 			this.setHumor(3);
@@ -309,130 +301,58 @@ public class Animals {
 			this.setMasque(true);
 			this.setHumor(1);
 		}
-		action();
+
 	}
 
 	public void shower() {
-		this.setEnergy(getEnergy() - 1);
-		this.setHunger(getHunger() + 1);
-		this.setLifeTime(this.getLifeTime() - 1);
-		this.setWc(this.getWc() + 1);
 		this.setHumor(2);
 		this.setCleanliness(true);
-		action();
+		this.doAction(-1, -1, 1);
 
 	}
 
-	public void moods() {
+	public String moods() {
+		String moods = "";
 		switch (this.getHumor()) {
+
 		case 1:
-			System.out.println("je suis pas content ><");
-			System.out.println("*Boude*");
+			moods = "je suis pas content ><\n*Boude*";
 			break;
 		case 2:
-			System.out.println("moi quand je suis content je vomis, et la je suis hyper content");
-			System.out.println("*vomis*");
+			moods = "moi quand je suis content je vomis, et la je suis hyper content\n*vomis* ";
+
 			break;
 		case 3:
-			System.out.println("haaaaa je me sens mieux");
+			moods = "haaaaa je me sens mieux";
 			break;
 
 		}
-		action();
+
+		return moods;
 
 	}
 
-	public void showApparance() {
-		System.out.println("");
-		System.out.println("Bonjour, je suis " + this.name);
-		System.out.println("je suis de couleur " + this.color);
-		System.out.println("Je mesure " + this.height + " metres");
+	public void doAction(int energyChange, int hungerChange, int wcChange) {
+		this.setLifeTime(this.getLifeTime() - 1);
+		this.setEnergy(getEnergy() + energyChange);
+		this.setHunger(getHunger() + hungerChange);
+		this.setWc(this.getWc() + wcChange);
 	}
 
-	public void action() {
-		if (this.getHealth() < 1 || this.getLifeTime() < 1) {
-			System.out.println("Adieu ...");
-			System.out.println("FATALITY");
-			System.out.println("Votre " + this.getName() + " est mort.");
-		} else {
-			if (this.getEnergy() < 1) {
-				System.out.println("je suis trop fatigué, je vais dormir ");
-				System.out.println("Bonne nuit !");
-				System.out.println("...");
-				System.out.println("...");
-				System.out.println("...");
-				sleep();
-			} else {
-				if (this.getWc() > 9) {
-					System.out.println("Désolé je n'ai pas pu me retenir =S");
-					this.setCleanliness(false);
-					this.setWc(0);
-					action();
-				} else {
-					if (this.getHunger() < 1) {
-						System.out.println("Jai trop faim, je vais manger !");
-						eat();
-					} else {
-						System.out.println("");
-						System.out.println("");
-						System.out.println("");
-						System.out.println("quel action vouler vous faire ?");
-						System.out.println("1 pour aller chez le coiffeur");
-						System.out.println("2 pour manger");
-						System.out.println("3 pour aller au toilette");
-						System.out.println("4 pour dormir");
-						System.out.println("5 pour ce reproduire");
-						System.out.println("6 pour exprimer mon humeur");
-						System.out.println("7 aller voir des amis");
-						System.out.println("8 faire du sport");
-						System.out.println("9 interagir avec mon masque");
-						System.out.println("10 ce laver");
-						System.out.println("11 aller fumer");
+	public String showStats() {
+		return (this.getAppearance() + "\n Mon estomac est remplie a " + this.getHunger() + " sur 10"
+				+ "\n Ma barre de wc est a " + this.getWc() + "\n Ma barre d'energie est a " + this.getEnergy()
+				+ " sur 10" + "\n Ma santé est a " + this.getHealth() + " sur 10"
+				+ (this.isMasque() == true ? "\n Je porte un masque" : "Je ne porte pas de masque :)")
+				+ (this.isCleanliness() == true ? "\n Je suis propre" : "Je suis sale :)")
 
-						System.out.println("quel action vouler vous faire ?");
-						int action = sc.nextInt();
-						switch (action) {
-						case 1:
-							dyeHair();
-							break;
-						case 2:
-							eat();
-							break;
-						case 3:
-							goToToilet();
-							break;
-						case 4:
-							sleep();
-							break;
-						case 5:
-							haveSex();
-							break;
-						case 6:
-							moods();
-							break;
-						case 7:
-							hangOut();
-							break;
-						case 8:
-							workOut();
-							break;
-						case 9:
-							corona();
-							break;
-						case 10:
-							shower();
-							break;
-						case 11:
-							smoke();
-							break;
-						default:
-							action();
+		);
+	}
 
-						}
-					}
-				}
-			}
-		}
+	public String getAppearance() {
+		return ("Bonjour, je suis " + this.name + "\n je suis de couleur " + this.color + "\n Je mesure " + this.height
+				+ " metres");
+
 	}
 
 }
