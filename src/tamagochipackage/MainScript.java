@@ -3,10 +3,10 @@ package tamagochipackage;
 import java.util.Scanner;
 
 public class MainScript {
-	
+
 	/**
-	 * function main who ask wich type of animals i want and create a object of my choice
-	 * (all my object inherit of my class Animals)
+	 * function main who ask which type of animals i want and create a object of my
+	 * choice (all my object inherit of my class Animals)
 	 *
 	 */
 	public static void main(String[] args) {
@@ -37,13 +37,24 @@ public class MainScript {
 		}
 	}
 
+	/**
+	 * My function createMenu, verify all the stats of my animals like energy or wc
+	 * and after , create menu for the user, he can choose which action .
+	 * 
+	 * @param <T>        is a generic class for call my method on my object, even if
+	 *                   my object is not created (extends animals, so i have acces
+	 *                   at all my method in animals, but when object is created, is
+	 *                   the method of my children class who take priorities)
+	 * @param tamagotchi is my object created
+	 */
 	public static <T extends Animals> void createMenu(T tamagotchi) {
-		
-		tamagotchi.askInfo();
-		System.out.println(tamagotchi.getAppearance());
-		
+
+		tamagotchi.askInfo();// ask at the user the stats of his choice
+		System.out.println(tamagotchi.getAppearance());// print all the stats of my animals
+
 		do {
-			if (tamagotchi.getEnergy() < 1) {
+			if (tamagotchi.getEnergy() < 1) {// if my animals dont have energy, he's gonna sleep, and use one lifetime
+												// etc
 
 				System.out.println("je suis trop fatigué, je vais dormir ");
 				System.out.println("Bonne nuit !");
@@ -52,12 +63,13 @@ public class MainScript {
 				System.out.println("...");
 				tamagotchi.sleep();
 			} else {
-				if (tamagotchi.getWc() > 9) {
+				if (tamagotchi.getWc() > 9) {// if my animals have too much wc, he's gonna go to toilet, and use one
+												// lifetime etc
 					System.out.println("Désolé je n'ai pas pu me retenir =S");
 					tamagotchi.setCleanliness(false);
 					tamagotchi.goToToilet();
 
-				} else {
+				} else {// if there is no stats in red alert, create the menu for my user
 					System.out.println("");
 					System.out.println("");
 					System.out.println("");
@@ -66,36 +78,50 @@ public class MainScript {
 					System.out.println("2 pour manger");
 					System.out.println("3 pour aller au toilette");
 					System.out.println("4 pour dormir");
-					System.out.println("5 pour ce reproduire");
+					System.out.println("5 pour se reproduire");
 					System.out.println("6 pour exprimer mon humeur");
-					System.out.println("7 aller voir des amis");
-					System.out.println("8 faire du sport");
-					System.out.println("9 interagir avec mon masque");
-					System.out.println("10 ce laver");
-					System.out.println("11 aller fumer");
-					System.out.println("12 afficher stats");
-					System.out.println("quel action vouler vous faire ?");
+					System.out.println("7 pour aller voir des amis");
+					System.out.println("8 pour faire du sport");
+					System.out.println("9 pour interagir avec mon masque");
+					System.out.println("10 pour se laver");
+					System.out.println("11 pour aller fumer");
+					System.out.println("12 pour afficher stats");
+					System.out.println("quel action voulez vous faire ?");
 					Scanner sc = new Scanner(System.in);
 					int action = sc.nextInt();
-					executeAction(action, tamagotchi);
+					executeAction(action, tamagotchi);// send the user choice at my method
 				}
 			}
-			if (tamagotchi.getHealth() < 1 && tamagotchi.isResurect()!=false ) {
-				System.out.println("Votre " + tamagotchi.getName() + " est mort.");
-				System.out.println("Mais ... que ce passe t-il ?");
-				System.out.println("Votre phoenix renait de ces cendres avec 5 pv ");
-				tamagotchi.setResurect(false);
-				tamagotchi.resurect();			
-			}
-		} while (tamagotchi.getHealth() > 0 && tamagotchi.isResurect()==false );
 
+			if (tamagotchi instanceof Phoenix) {//check if my animals is a phoenix
+				Phoenix phoenix = (Phoenix) tamagotchi;//cast my class phoenix on the object p for use my method specific at my class phoenix
+
+				if (phoenix.getHealth() < 1 && phoenix.canResurect()) {
+
+					System.out.println("Votre " + phoenix.getName() + " est mort.");
+					System.out.println("Mais ... que ce passe t-il ?");
+					System.out.println("Votre phoenix renait de ces cendres avec 5 pv ");
+					phoenix.setResurect(false);
+					phoenix.resurect();
+
+				}
+			}
+
+		} while (tamagotchi.getHealth() > 0);
+		// when my animals die, script stop
 		System.out.println("Adieu ...");
 		System.out.println("FATALITY");
 		System.out.println("Votre " + tamagotchi.getName() + " est mort.");
-		
-		
+
 	}
 
+	/**
+	 * in function of the user choice, do some method
+	 * 
+	 * @param <T>        generic class for call my method
+	 * @param userChoice
+	 * @param t          : my object
+	 */
 	public static <T extends Animals> void executeAction(int userChoice, T t) {
 
 		switch (userChoice) {
@@ -113,7 +139,7 @@ public class MainScript {
 			System.out.println("");
 			System.out.println("J'ai bien etait au toilettes");
 			System.out.println("");
-			
+
 			break;
 		case 4:
 			t.sleep();

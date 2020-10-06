@@ -16,8 +16,10 @@ public class Animals {
 	private int health = 10;
 	boolean masque = true;
 	boolean cleanliness = true;
-	boolean canResurect=false;
 
+	/**
+	 * constructor of animals
+	 */
 	public Animals() {
 	}
 
@@ -268,11 +270,8 @@ public class Animals {
 	 * -1 to energy,- 1 to hunger, and 1 to wc
 	 */
 	public void dyeHair() {
-		System.out.println("quel nouvelle couleurs voulez vous ?");
-		String newHairColor;
-		do {
-			newHairColor = sc.next();
-		} while (newHairColor.getClass().equals("String"));
+		System.out.println("quelle nouvelle couleurs voulez vous ?");
+		String newHairColor = sc.next();
 		this.setHairColor(newHairColor);
 		doAction(-1, -1, 1);
 	}
@@ -324,7 +323,7 @@ public class Animals {
 	 */
 	public void corona() {
 		doAction(-1, -1, +1);
-		if (this.isMasque() == true) {// if we have masque
+		if (this.isMasque()) {// if we have masque
 			this.setMasque(false);// remove a masque
 			this.setHumor(3);// and set humor to "soulagé"
 		} else {// else put on masque, and set humor to not happy
@@ -386,26 +385,14 @@ public class Animals {
 
 	/**
 	 * go check the stats, and
+	 * 
 	 * @return the stats in a string
 	 */
 	public String getAppearance() {
 		return ("Bonjour, je suis " + this.name + "\n je suis de couleur " + this.color + "\n Je mesure " + this.height
 				+ " metres");
 	}
-	
-	
-	public boolean isResurect() {
-	
-		return (canResurect);
-	}
-	public void setResurect(boolean canResurect) {
-		this.canResurect=canResurect;
-	}
-	public void resurect() {
-		this.setHealth(5);
-		this.setLifeTime(10);
-		
-	}
+
 	/**
 	 * go check the stats, and
 	 * 
