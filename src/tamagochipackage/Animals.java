@@ -436,7 +436,7 @@ public class Animals {
 				+ "\n Ma barre de wc est a " + this.getWc() + "\n Ma barre d'energie est a " + this.getEnergy()
 				+ " sur 10" + "\n Ma santé est a " + this.getHealth() + " sur 10"
 				+ (this.isMasque() == true ? "\n Je porte un masque" : "\n Je ne porte pas de masque :)")
-				+ (this.isCleanliness() == true ? "\n Je suis propre" : "\n Je suis sale :)"));
+				+ (this.isCleanliness() == true ? "\n Je suis propre" : "\n Je suis sale "));
 	}
 
 }

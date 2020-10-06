@@ -10,6 +10,7 @@ public class MainScript {
 	 *
 	 */
 	public static void main(String[] args) {
+
 		Scanner sc = new Scanner(System.in);
 		System.out.println("quel type de tamagotchi voulez vous ? ");
 		System.out.println("1 dragon ");
@@ -38,8 +39,9 @@ public class MainScript {
 	}
 
 	/**
-	 * My function createMenu, verify all the stats of my animals like energy or wc
-	 * and after , create menu for the user, he can choose which action .
+	 * ask the user the stats he want, print all the stats of my object call the
+	 * function checkstat, showmenu and execute action until my animals has 0pv and
+	 * my animals is not a phoenix
 	 * 
 	 * @param <T>        is a generic class for call my method on my object, even if
 	 *                   my object is not created (extends animals, so i have access
@@ -53,74 +55,90 @@ public class MainScript {
 		System.out.println(tamagotchi.getAppearance());// print all the stats of my animals
 
 		do {
-			if (tamagotchi.getEnergy() < 1) {// if my animals dont have energy, he's gonna sleep, and use one lifetime
-												// etc
-
-				System.out.println("je suis trop fatigué, je vais dormir ");
-				System.out.println("Bonne nuit !");
-				System.out.println("...");
-				System.out.println("...");
-				System.out.println("...");
-				tamagotchi.sleep();
-			} else {
-				if (tamagotchi.getWc() > 9) {// if my animals have too much wc, he's gonna go to toilet, and use one
-												// lifetime etc
-					System.out.println("Désolé je n'ai pas pu me retenir =S");
-					tamagotchi.setCleanliness(false);
-					tamagotchi.goToToilet();
-
-				} else {// if there is no stats in red alert, create the menu for my user
-					System.out.println("");
-					System.out.println("");
-					System.out.println("");
-					System.out.println("quel action vouler vous faire ?");
-					System.out.println("1 pour aller chez le coiffeur");
-					System.out.println("2 pour manger");
-					System.out.println("3 pour aller au toilette");
-					System.out.println("4 pour dormir");
-					System.out.println("5 pour se reproduire");
-					System.out.println("6 pour exprimer mon humeur");
-					System.out.println("7 pour aller voir des amis");
-					System.out.println("8 pour faire du sport");
-					System.out.println("9 pour interagir avec mon masque");
-					System.out.println("10 pour se laver");
-					System.out.println("11 pour aller fumer");
-					System.out.println("12 pour afficher stats");
-					if (tamagotchi instanceof Dragon) { // test of function specific at a children class, add a choice
-														// for the user in function of the type of my opbject
-						System.out.println("13 ce regenerer avec du feu");
-
-					} else if (tamagotchi instanceof Trolls) {
-						System.out.println("13 aller taper des chose pour regen l'energy");
-					}
-					System.out.println("quel action voulez vous faire ?");
-					Scanner sc = new Scanner(System.in);
-					int action = sc.nextInt();
-					executeAction(action, tamagotchi);// send the user choice at my method
-				}
-			}
-
+			checkStats(tamagotchi);// go check the energy/wc bar and hunger
+			int choiceUser = showMenu(tamagotchi);// print my menu, and ask user which one action he want to do
+			executeAction(choiceUser, tamagotchi);// execute my action i have choose
 			if (tamagotchi instanceof Phoenix) {// check if my animals is a phoenix
 				Phoenix phoenix = (Phoenix) tamagotchi;// cast my class phoenix on the object p for use my method
 														// specific at my class phoenix
-
 				if (phoenix.getHealth() < 1 && phoenix.canResurect()) {
-
 					System.out.println("Votre " + phoenix.getName() + " est mort.");
 					System.out.println("Mais ... que ce passe t-il ?");
 					System.out.println("Votre phoenix renait de ces cendres avec 5 pv ");
 					phoenix.setResurect(false);
 					phoenix.resurect();
-
 				}
 			}
-
 		} while (tamagotchi.getHealth() > 0);
 		// when my animals die, script stop
 		System.out.println("Adieu ...");
 		System.out.println("FATALITY");
 		System.out.println("Votre " + tamagotchi.getName() + " est mort.");
 
+	}
+
+	/**
+	 * check the stats of my animal created, and if he dosnt have energy, he go to
+	 * sleep etc...
+	 * 
+	 * @param <T>
+	 * @param tamagotchi
+	 */
+	public static <T extends Animals> void checkStats(T tamagotchi) {
+		if (tamagotchi.getEnergy() < 1) {// if my animals dont have energy, he's gonna sleep, and use one lifetime
+			// etc
+
+			System.out.println("je suis trop fatigué, je vais dormir ");
+			System.out.println("Bonne nuit !");
+			System.out.println("...");
+			System.out.println("...");
+			System.out.println("...");
+			tamagotchi.sleep();
+		} else {
+			if (tamagotchi.getWc() > 9) {// if my animals have too much wc, he's gonna go to toilet, and use one
+				// lifetime etc
+				System.out.println("Désolé je n'ai pas pu me retenir =S");
+				tamagotchi.setCleanliness(false);
+				tamagotchi.goToToilet();
+
+			}
+		}
+	}
+
+	/**
+	 * print the menu, and return the choice of user 
+	 * @param <T>
+	 * @param tamagotchi
+	 * @return
+	 */
+	public static <T extends Animals> int showMenu(T tamagotchi) {
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("Liste des actions disponibles");
+		System.out.println("1 pour aller chez le coiffeur");
+		System.out.println("2 pour manger");
+		System.out.println("3 pour aller au toilette");
+		System.out.println("4 pour dormir");
+		System.out.println("5 pour se reproduire");
+		System.out.println("6 pour exprimer mon humeur");
+		System.out.println("7 pour aller voir des amis");
+		System.out.println("8 pour faire du sport");
+		System.out.println("9 pour interagir avec mon masque");
+		System.out.println("10 pour se laver");
+		System.out.println("11 pour aller fumer");
+		System.out.println("12 pour afficher stats");
+		if (tamagotchi instanceof Dragon) { // test of function specific at a children class, add a choice
+			// for the user in function of the type of my opbject
+			System.out.println("13 ce regenerer avec du feu");
+
+		} else if (tamagotchi instanceof Trolls) {
+			System.out.println("13 aller taper des chose pour regen l'energy");
+		}
+		System.out.println("quel action voulez vous faire ?");
+		Scanner sc = new Scanner(System.in);
+		int action = sc.nextInt();
+		return action;
 	}
 
 	/**
