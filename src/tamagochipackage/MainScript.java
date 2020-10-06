@@ -149,9 +149,6 @@ public class MainScript {
 			break;
 		case 5:
 			t.haveSex();
-			System.out.println("");
-			System.out.println("J'ai bien haveSex");
-			System.out.println("");
 			break;
 		case 6:
 			System.out.println(t.moods());

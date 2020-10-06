@@ -54,7 +54,7 @@ public class Phoenix extends Animals {
 	 * get the getAppearance() of Animals and add the mane color
 	 */
 	public String getAppearance() {
-		String appearance = "\n je suis un phoenix \n ma criniere est " + this.getHairColor();
+		String appearance = "\n Je suis un phoenix \n ma criniere est " + this.getHairColor();
 		return (super.getAppearance() + appearance);
 	}
 

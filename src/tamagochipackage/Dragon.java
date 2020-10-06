@@ -25,7 +25,7 @@ public class Dragon extends Animals {
 	 * get the getAppearance() of Animals and add the scale color
 	 */
 	public String getAppearance() {
-		String appearance = "\n je suis un dragon \n mes écailles sont " + this.getHairColor();
+		String appearance = "\n Je suis un dragon \n mes écailles sont " + this.getHairColor();
 		return (super.getAppearance() + appearance);
 
 	}

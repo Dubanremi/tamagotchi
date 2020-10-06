@@ -288,15 +288,55 @@ public class Animals {
 	/**
 	 * Method to have sex set humor to happy set cleanliness to false call to my
 	 * method doAction who add -1 to energy,- 1 to hunger, and 1 to wc
+	 * create a new object of type of my object parent.
 	 */
 	public void haveSex() {
 		this.setHumor(2);
 		this.setCleanliness(false);
 		doAction(-1, -1, 1);
+		
+		if (this instanceof Dragon) {
+			Dragon baby = new Dragon();
+			baby.setName("baby");
+			baby.setColor(this.getColor());
+			baby.setHairColor(this.getHairColor());
+			baby.setHeight(this.getHeight());
+			System.out.println("\n Voila votre bébé :");
+			System.out.println(baby.getAppearance());
+		}
+
+		else if (this instanceof Phoenix) {
+			Phoenix baby = new Phoenix();
+			baby.setName("baby");
+			baby.setColor(this.getColor());
+			baby.setHairColor(this.getHairColor());
+			baby.setHeight(this.getHeight());
+			System.out.println("Voila votre bébé :");
+			System.out.println(baby.getAppearance());
+		}
+		else if (this instanceof Licorne) {
+			Licorne baby = new Licorne();
+			baby.setName("baby");
+			baby.setColor(this.getColor());
+			baby.setHairColor(this.getHairColor());
+			baby.setHeight(this.getHeight());
+			System.out.println("Voila votre bébé :");
+			System.out.println(baby.getAppearance());
+		}
+		else if (this instanceof Trolls) {
+			Trolls baby = new Trolls();
+			baby.setName("baby");
+			baby.setColor(this.getColor());
+			baby.setHairColor(this.getHairColor());
+			baby.setHeight(this.getHeight());
+			System.out.println("Voila votre bébé :");
+			System.out.println(baby.getAppearance());
+		}
+
 	}
 
 	/**
-	 * Method to hang out with firend set humor to happy call to my method doAction
+	 * Method to hang out with friend set humor to happy call to my method doAction
 	 * who add -1 to energy,- 1 to hunger, and 1 to wc
 	 */
 	public void hangOut() {
@@ -389,7 +429,7 @@ public class Animals {
 	 * @return the stats in a string
 	 */
 	public String getAppearance() {
-		return ("Bonjour, je suis " + this.name + "\n je suis de couleur " + this.color + "\n Je mesure " + this.height
+		return ("Bonjour, je suis " + this.name + "\n Je suis de couleur " + this.color + "\n Je mesure " + this.height
 				+ " metres");
 	}
 
@@ -402,8 +442,8 @@ public class Animals {
 		return (this.getAppearance() + "\n Mon estomac est remplie a " + this.getHunger() + " sur 10"
 				+ "\n Ma barre de wc est a " + this.getWc() + "\n Ma barre d'energie est a " + this.getEnergy()
 				+ " sur 10" + "\n Ma santé est a " + this.getHealth() + " sur 10"
-				+ (this.isMasque() == true ? "\n Je porte un masque" : "Je ne porte pas de masque :)")
-				+ (this.isCleanliness() == true ? "\n Je suis propre" : "Je suis sale :)"));
+				+ (this.isMasque() == true ? "\n Je porte un masque" : "\n Je ne porte pas de masque :)")
+				+ (this.isCleanliness() == true ? "\n Je suis propre" : "\n Je suis sale :)"));
 	}
 
 }
