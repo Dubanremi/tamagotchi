@@ -27,6 +27,13 @@ public class Trolls extends Animals {
 	public String getAppearance() {
 		String appearance = "\n Je suis un trolls \n mes cheveux sont " + this.getHairColor();
 		return (super.getAppearance() + appearance);
+	}
 
+	/**
+	 * function specific to trolls, increase the energy and set humor to happy
+	 */
+	public void fightThings() {
+		this.setHumor(2);
+		this.setEnergy(this.getEnergy() + 1);
 	}
 }

@@ -42,7 +42,7 @@ public class MainScript {
 	 * and after , create menu for the user, he can choose which action .
 	 * 
 	 * @param <T>        is a generic class for call my method on my object, even if
-	 *                   my object is not created (extends animals, so i have acces
+	 *                   my object is not created (extends animals, so i have access
 	 *                   at all my method in animals, but when object is created, is
 	 *                   the method of my children class who take priorities)
 	 * @param tamagotchi is my object created
@@ -86,6 +86,13 @@ public class MainScript {
 					System.out.println("10 pour se laver");
 					System.out.println("11 pour aller fumer");
 					System.out.println("12 pour afficher stats");
+					if (tamagotchi instanceof Dragon) { // test of function specific at a children class, add a choice
+														// for the user in function of the type of my opbject
+						System.out.println("13 ce regenerer avec du feu");
+
+					} else if (tamagotchi instanceof Trolls) {
+						System.out.println("13 aller taper des chose pour regen l'energy");
+					}
 					System.out.println("quel action voulez vous faire ?");
 					Scanner sc = new Scanner(System.in);
 					int action = sc.nextInt();
@@ -93,8 +100,9 @@ public class MainScript {
 				}
 			}
 
-			if (tamagotchi instanceof Phoenix) {//check if my animals is a phoenix
-				Phoenix phoenix = (Phoenix) tamagotchi;//cast my class phoenix on the object p for use my method specific at my class phoenix
+			if (tamagotchi instanceof Phoenix) {// check if my animals is a phoenix
+				Phoenix phoenix = (Phoenix) tamagotchi;// cast my class phoenix on the object p for use my method
+														// specific at my class phoenix
 
 				if (phoenix.getHealth() < 1 && phoenix.canResurect()) {
 
@@ -186,6 +194,19 @@ public class MainScript {
 		case 12:
 			System.out.println(t.showStats());
 			break;
+		case 13:
+			if (t instanceof Dragon) {// test of method specific to an object, switch of method in fucntion of type of
+										// my object
+				Dragon myDragon = (Dragon) t;
+				myDragon.eatFire();
+				System.out.println("miam le feu c'est bon.");
+			} else if (t instanceof Trolls) {
+				Trolls myTrolls = (Trolls) t;
+				myTrolls.fightThings();
+				System.out.println("Gneuh taper !");
+			}
+			break;
+
 		default:
 
 		}

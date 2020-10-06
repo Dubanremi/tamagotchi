@@ -29,5 +29,13 @@ public class Licorne extends Animals {
 		return (super.getAppearance() + appearance);
 
 	}
+	public void setCleanliness(boolean cleanliness) {
+		this.cleanliness = cleanliness;
+		if (!this.isCleanliness()){
+			this.cleanliness=true;
+			System.out.println("Je suis une licorne, je suis tout le temps propre");
+			System.out.println("Donc ma propreté est repasser a propre.");
+		}
+	}
 
 }

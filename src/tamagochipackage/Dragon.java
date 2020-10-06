@@ -29,5 +29,12 @@ public class Dragon extends Animals {
 		return (super.getAppearance() + appearance);
 
 	}
+	
+	/**
+	 * public function specific to dragon for regen health
+	 */
+	public void eatFire() {
+		this.setHealth(this.getHealth()+1);
+	}
 
 }

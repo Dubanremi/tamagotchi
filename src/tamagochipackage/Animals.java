@@ -296,42 +296,36 @@ public class Animals {
 		doAction(-1, -1, 1);
 		if (this instanceof Dragon) {
 			Dragon baby = new Dragon();
-			baby.setName("baby");
-			baby.setColor(this.getColor());
-			baby.setHairColor(this.getHairColor());
-			baby.setHeight(this.getHeight());
-			System.out.println("\n Voila votre bébé :");
-			System.out.println(baby.getAppearance());
+			makeBaby(baby);
 		}
 
 		else if (this instanceof Phoenix) {
 			Phoenix baby = new Phoenix();
-			baby.setName("baby");
-			baby.setColor(this.getColor());
-			baby.setHairColor(this.getHairColor());
-			baby.setHeight(this.getHeight());
-			System.out.println("Voila votre bébé :");
-			System.out.println(baby.getAppearance());
+			makeBaby(baby);
 
 		} else if (this instanceof Licorne) {
 			Licorne baby = new Licorne();
-			baby.setName("baby");
-			baby.setColor(this.getColor());
-			baby.setHairColor(this.getHairColor());
-			baby.setHeight(this.getHeight());
-			System.out.println("Voila votre bébé :");
-			System.out.println(baby.getAppearance());
+			makeBaby(baby);
 
 		} else if (this instanceof Trolls) {
 			Trolls baby = new Trolls();
-			baby.setName("baby");
-			baby.setColor(this.getColor());
-			baby.setHairColor(this.getHairColor());
-			baby.setHeight(this.getHeight());
-			System.out.println("Voila votre bébé :");
-			System.out.println(baby.getAppearance());
+			makeBaby(baby);
 		}
 
+	}
+
+/**
+ * make a baby with the same characteristic of parent
+ * @param <Generic> class generic
+ * @param baby : object already created, with a particular type
+ */
+	public <Generic extends Animals> void makeBaby(Generic baby) {
+		baby.setName("baby");
+		baby.setColor(this.getColor());
+		baby.setHairColor(this.getHairColor());
+		baby.setHeight(this.getHeight());
+		System.out.println("\n Voila votre bébé :");
+		System.out.println(baby.getAppearance());
 	}
 
 	/**

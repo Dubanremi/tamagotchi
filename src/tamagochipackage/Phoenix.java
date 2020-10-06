@@ -1,7 +1,7 @@
 package tamagochipackage;
 
 public class Phoenix extends Animals {
-	boolean canResurect = false;
+	boolean canResurect = true;
 
 	/**
 	 * constructor of Phoenix set a height between 0.1 and 2 set health to 8
@@ -11,7 +11,7 @@ public class Phoenix extends Animals {
 		double heightDoublePhoenix = (double) heighPhoenix / 10;
 		this.setHeight(heightDoublePhoenix);
 		this.setHealth(8);
-		this.setResurect(true);
+
 	}
 
 	/**
