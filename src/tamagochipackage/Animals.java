@@ -287,14 +287,13 @@ public class Animals {
 
 	/**
 	 * Method to have sex set humor to happy set cleanliness to false call to my
-	 * method doAction who add -1 to energy,- 1 to hunger, and 1 to wc
-	 * create a new object of type of my object parent.
+	 * method doAction who add -1 to energy,- 1 to hunger, and 1 to wc create a new
+	 * object of type of my object parent.
 	 */
 	public void haveSex() {
 		this.setHumor(2);
 		this.setCleanliness(false);
 		doAction(-1, -1, 1);
-		
 		if (this instanceof Dragon) {
 			Dragon baby = new Dragon();
 			baby.setName("baby");
@@ -313,8 +312,8 @@ public class Animals {
 			baby.setHeight(this.getHeight());
 			System.out.println("Voila votre bébé :");
 			System.out.println(baby.getAppearance());
-		}
-		else if (this instanceof Licorne) {
+
+		} else if (this instanceof Licorne) {
 			Licorne baby = new Licorne();
 			baby.setName("baby");
 			baby.setColor(this.getColor());
@@ -322,8 +321,8 @@ public class Animals {
 			baby.setHeight(this.getHeight());
 			System.out.println("Voila votre bébé :");
 			System.out.println(baby.getAppearance());
-		}
-		else if (this instanceof Trolls) {
+
+		} else if (this instanceof Trolls) {
 			Trolls baby = new Trolls();
 			baby.setName("baby");
 			baby.setColor(this.getColor());
