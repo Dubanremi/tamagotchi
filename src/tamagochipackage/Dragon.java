@@ -13,6 +13,18 @@ public class Dragon extends Animals {
 	}
 
 	/**
+	 * ascii art for dragon
+	 */
+	public void asciiDragon() {
+		System.out
+				.println("              \\||/\r\n" + "                |  @___oo\r\n" + "      /\\  /\\   / (__,,,,|\r\n"
+						+ "     ) /^\\) ^\\/ _)\r\n" + "     )   /^\\/   _)\r\n" + "     )   _ /  / _)\r\n"
+						+ " /\\  )/\\/ ||  | )_)\r\n" + "<  >      |(,,) )__)\r\n" + " ||      /    \\)___)\\\r\n"
+						+ " | \\____(      )___) )___\r\n" + "  \\______(_______;;; __;;;" + "\n");
+
+	}
+
+	/**
 	 * get the askInfo() of Animals and add the scales color
 	 */
 	public void askInfo() {
@@ -29,29 +41,31 @@ public class Dragon extends Animals {
 		return (super.getAppearance() + appearance);
 
 	}
+
 	/**
-	 * for the dragon, he can have 15 of stats, so we need to adjust the showBar function
+	 * for the dragon, he can have 15 of stats, so we need to adjust the showBar
+	 * function
 	 */
 	public String showBar(int valeursStats) {
 		return ("|||||||||||||||".substring(0, valeursStats) + "***************".substring(valeursStats, 15));
 	}
-	
+
 	/**
 	 * verify if the health don't exceed 15
 	 */
 	public void setHealth(int health) {
 		super.setHealth(health);
 		if (this.getHealth() > 14) {
-			this.health=15;
+			this.health = 15;
 		}
 
 	}
+
 	/**
 	 * public function specific to dragon for regen health
 	 */
 	public void eatFire() {
-		this.setHealth(this.getHealth()+1);
+		this.setHealth(this.getHealth() + 1);
 	}
-	
 
 }

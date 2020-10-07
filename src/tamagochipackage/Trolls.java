@@ -13,6 +13,17 @@ public class Trolls extends Animals {
 	}
 
 	/**
+	 * ascii art for Trolls
+	 */
+	public void asciiTrolls() {
+		System.out.println("             ,      ,\r\n" + "            /(.-\"\"-.)\\\r\n" + "        |\\  \\/      \\/  /|\r\n"
+				+ "        | \\ / =.  .= \\ / |\r\n" + "        \\( \\   o\\/o   / )/\r\n"
+				+ "         \\_, '-/  \\-' ,_/\r\n" + "           /   \\__/   \\\r\n" + "           \\ \\__/\\__/ /\r\n"
+				+ "         ___\\ \\|--|/ /___\r\n" + "       /`    \\      /    `\\\r\n"
+				+ "      /       '----'       \\" + "\n");
+	}
+
+	/**
 	 * get the askInfo() of Animals and add the hair color
 	 */
 	public void askInfo() {

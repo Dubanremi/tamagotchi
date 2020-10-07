@@ -20,19 +20,23 @@ public class MainScript {
 		switch (sc.nextInt()) {
 		case 1:
 			Dragon myDragon = new Dragon();
+			myDragon.asciiDragon();
 			createMenu(myDragon);
 			break;
 
 		case 2:
 			Licorne myLicorne = new Licorne();
+			myLicorne.asciiUnicorn();
 			createMenu(myLicorne);
 			break;
-		case 3:
+		case 3:			
 			Trolls myTrolls = new Trolls();
+			myTrolls.asciiTrolls();
 			createMenu(myTrolls);
 			break;
-		case 4:
+		case 4:			
 			Phoenix myPhenix = new Phoenix();
+			myPhenix.asciiPhoenix();
 			createMenu(myPhenix);
 			break;
 		}

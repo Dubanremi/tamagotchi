@@ -14,6 +14,15 @@ public class Phoenix extends Animals {
 
 	}
 
+	
+	/**
+	 * ascii art for phoenix
+	 */
+	public void asciiPhoenix() {
+		System.out.println("   _,=\"( _  )\"=,_\r\n" + "_,'    \\_>\\_/    ',_\r\n" + ".7,     {  }     ,\\.\r\n"
+				+ " '/:,  .m  m.  ,:\\'\r\n" + "   ')\",(/  \\),\"('\r\n" + "      '{'!!'}'+\n");
+	}
+
 	/**
 	 * getter of resurect
 	 * 
