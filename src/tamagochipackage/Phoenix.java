@@ -11,6 +11,8 @@ public class Phoenix extends Animals {
 		double heightDoublePhoenix = (double) heighPhoenix / 10;
 		this.setHeight(heightDoublePhoenix);
 		this.setHealth(8);
+		this.setHunger(8);
+		this.setEnergy(8);
 
 	}
 
@@ -18,7 +20,8 @@ public class Phoenix extends Animals {
 	/**
 	 * ascii art for phoenix
 	 */
-	public void asciiPhoenix() {
+	@Override
+	public void ascii() {
 		System.out.println("   _,=\"( _  )\"=,_\r\n" + "_,'    \\_>\\_/    ',_\r\n" + ".7,     {  }     ,\\.\r\n"
 				+ " '/:,  .m  m.  ,:\\'\r\n" + "   ')\",(/  \\),\"('\r\n" + "      '{'!!'}'+\n");
 	}
@@ -48,8 +51,27 @@ public class Phoenix extends Animals {
 	public void resurect() {
 		this.setHealth(5);
 		this.setLifeTime(10);
+		this.setHunger(2);
 	}
 
+	/**
+	 * return the value of the stats in form of a bar
+	 */
+	public String showBar(int valeursStats) {
+		return ("||||||||".substring(0, valeursStats) + "********".substring(valeursStats, 8));
+	}
+	
+	/**
+	 * return the stats in a format string
+	 */
+	public String showStats() {
+		return (super.showStats()+ "\n Mon estomac est remplie a " + this.getHunger() + " sur 8  "
+				+ showBar(this.getHunger()) + "\n Ma barre de wc est a " + this.getWc() + "             "
+				+ showBar(this.getWc()) + "\n Ma barre d'energie est a " + this.getEnergy() + " sur 8   "
+				+ showBar(this.getEnergy()) + "\n Ma santé est a " + this.getHealth() + " sur 8             "
+				+ showBar(this.getHealth()));
+	}
+	
 	/**
 	 * get the askInfo() of Animals and add the mane color
 	 */

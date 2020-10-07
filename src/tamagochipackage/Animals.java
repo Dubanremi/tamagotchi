@@ -2,7 +2,7 @@ package tamagochipackage;
 
 import java.util.Scanner;
 
-public class Animals {
+public abstract class Animals {
 	public Scanner sc = new Scanner(System.in);
 	private String name;
 	private double height;
@@ -22,7 +22,17 @@ public class Animals {
 	 */
 	public Animals() {
 	}
-
+/**
+ * Abstract class, for obligate to create a ascii method in class children .
+ */
+	public abstract void ascii(); 
+	
+	/**
+	 * change the int of my value of stats to a view with bar 
+	 * @param valueStats
+	 * @return view with bar
+	 */
+	public abstract String showBar(int valueStats);
 	/**
 	 * @return the name
 	 */
@@ -113,7 +123,7 @@ public class Animals {
 	public void setHunger(int hunger) {
 		this.hunger = hunger;
 		if (this.getHunger() == 0) {
-			System.out.println("Je suis littÃ©ralement mort de faim .");
+			System.out.println("Je suis littéralement mort de faim .");
 			this.setHealth(0);
 		} else if (this.getHunger() < 3) {
 			System.out.println("J'ai faim ");
@@ -325,7 +335,7 @@ public class Animals {
 		baby.setColor(this.getColor());
 		baby.setHairColor(this.getHairColor());
 		baby.setHeight(this.getHeight());
-		System.out.println("\n Voila votre bÃ©bÃ© :");
+		System.out.println("\n Voila votre bébé :");
 		System.out.println(baby.getAppearance());
 	}
 
@@ -433,11 +443,7 @@ public class Animals {
 	 * @return the stats in a string
 	 */
 	public String showStats() {
-		return (this.getAppearance() + "\n Mon estomac est remplie a " + this.getHunger() + " sur 10  "
-				+ showBar(this.getHunger()) + "\n Ma barre de wc est a " + this.getWc() + "               "
-				+ showBar(this.getWc()) + "\n Ma barre d'energie est a " + this.getEnergy() + " sur 10  "
-				+ showBar(this.getEnergy()) + "\n Ma santé est a " + this.getHealth() + " sur 10            "
-				+ showBar(this.getHealth())
+		return (this.getAppearance() 
 				+ (this.isMasque() == true ? "\n Je porte un masque" : "\n Je ne porte pas de masque :)")
 				+ (this.isCleanliness() == true ? "\n Je suis propre" : "\n Je suis sale "));
 	}
@@ -449,8 +455,6 @@ public class Animals {
 	 * @param valeursStats
 	 * @return my bar, in type string
 	 */
-	public String showBar(int valueStats) {
-		return ("||||||||||".substring(0, valueStats) + "**********".substring(valueStats, 10));
-	}
+
 
 }

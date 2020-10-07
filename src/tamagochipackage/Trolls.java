@@ -10,12 +10,15 @@ public class Trolls extends Animals {
 		double heighTrollsDouble = heighTrolls / 10;
 		this.setHeight(heighTrollsDouble);
 		this.setHealth(12);
+		this.setHunger(12);
+		this.setEnergy(12);
 	}
 
 	/**
 	 * ascii art for Trolls
 	 */
-	public void asciiTrolls() {
+	@Override
+	public void ascii() {
 		System.out.println("             ,      ,\r\n" + "            /(.-\"\"-.)\\\r\n" + "        |\\  \\/      \\/  /|\r\n"
 				+ "        | \\ / =.  .= \\ / |\r\n" + "        \\( \\   o\\/o   / )/\r\n"
 				+ "         \\_, '-/  \\-' ,_/\r\n" + "           /   \\__/   \\\r\n" + "           \\ \\__/\\__/ /\r\n"
@@ -39,12 +42,29 @@ public class Trolls extends Animals {
 		String appearance = "\n Je suis un trolls \n mes cheveux sont " + this.getHairColor();
 		return (super.getAppearance() + appearance);
 	}
-
+	
+	/**
+	 * return the value of the stats in form of a bar
+	 */
+	public String showBar(int valeursStats) {
+		return ("||||||||||||".substring(0, valeursStats) + "************".substring(valeursStats, 12));
+	}
+	
+	/**
+	 * return the stats in a format string
+	 */
+	public String showStats() {
+		return (super.showStats()+ "\n Mon estomac est remplie a " + this.getHunger() + " sur 12  "
+				+ showBar(this.getHunger()) + "\n Ma barre de wc est a " + this.getWc() + "             "
+				+ showBar(this.getWc()) + "\n Ma barre d'energie est a " + this.getEnergy() + " sur 12   "
+				+ showBar(this.getEnergy()) + "\n Ma santé est a " + this.getHealth() + " sur 12             "
+				+ showBar(this.getHealth()));
+	}
 	/**
 	 * function specific to trolls, increase the energy and set humor to happy
 	 */
 	public void fightThings() {
 		this.setHumor(2);
-		this.setEnergy(this.getEnergy() + 1);
+		this.setLifeTime(this.getLifeTime() + 1);
 	}
 }

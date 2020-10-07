@@ -7,15 +7,18 @@ public class Dragon extends Animals {
 	 * health to 15
 	 */
 	public Dragon() {
-		double heighDragon = (int) (Math.random() * (20 - 10) + 10);
+		double heighDragon = (double) (Math.random() * (20 - 10) + 10);
 		this.setHeight(heighDragon);
 		this.setHealth(15);
+		this.setEnergy(15);
+		this.setHunger(15);
 	}
 
 	/**
-	 * ascii art for dragon
+	 * ascii art for dragon override is because my method in my parents is abstract
 	 */
-	public void asciiDragon() {
+	@Override
+	public void ascii() {
 		System.out
 				.println("              \\||/\r\n" + "                |  @___oo\r\n" + "      /\\  /\\   / (__,,,,|\r\n"
 						+ "     ) /^\\) ^\\/ _)\r\n" + "     )   /^\\/   _)\r\n" + "     )   _ /  / _)\r\n"
@@ -62,10 +65,21 @@ public class Dragon extends Animals {
 	}
 
 	/**
+	 * return the stats in a format string
+	 */
+	public String showStats() {
+		return (super.showStats() + "\n Mon estomac est remplie a " + this.getHunger() + " sur 15  "
+				+ showBar(this.getHunger()) + "\n Ma barre de wc est a " + this.getWc() + "             "
+				+ showBar(this.getWc()) + "\n Ma barre d'energie est a " + this.getEnergy() + " sur 15   "
+				+ showBar(this.getEnergy()) + "\n Ma santé est a " + this.getHealth() + " sur 15             "
+				+ showBar(this.getHealth()));
+	}
+
+	/**
 	 * public function specific to dragon for regen health
 	 */
 	public void eatFire() {
-		this.setHealth(this.getHealth() + 1);
+		this.setLifeTime(this.getLifeTime() + 2);
 	}
 
 }

@@ -10,12 +10,15 @@ public class Licorne extends Animals {
 		double heightLicorneDouble = heighLicorne / 10;
 		this.setHeight(heightLicorneDouble);
 		this.setHealth(8);
+		this.setHunger(8);
+		this.setEnergy(8);
 	}
 
 	/**
 	 * ascii art for unicorn
 	 */
-	public void asciiUnicorn() {
+	@Override
+	public void ascii() {
 		System.out.println("`\\\r\n" + "  \\\\,\r\n" + "   \\\\\\,^,.,,.\r\n" + "   ,;7~((\\))`;;,,\r\n"
 				+ "   ,(@') ;)`))\\;;',\r\n" + "    )  . ),((  ))\\;,\r\n" + "   /;`,,/7),)) )) )\\,,      ,,,... ,\r\n"
 				+ "  (& )`   (,((,((;( ))\\,_,,;'`    `\\\\,\r\n" + "   `\"    ` ), ))),/( (            `)\\,\r\n"
@@ -47,6 +50,26 @@ public class Licorne extends Animals {
 
 	}
 
+	/**
+	 * return the value of the stats in form of a bar
+	 */
+	public String showBar(int valeursStats) {
+		return ("||||||||".substring(0, valeursStats) + "********".substring(valeursStats, 8));
+	}
+
+	/**
+	 * return the stats in a format string
+	 */
+	public String showStats() {
+		return (super.showStats() + "\n Mon estomac est remplie a " + this.getHunger() + " sur 8  "
+				+ showBar(this.getHunger()) + "\n Ma barre de wc est a " + this.getWc() + "             "
+				+ showBar(this.getWc()) + "\n Ma barre d'energie est a " + this.getEnergy() + " sur 8   "
+				+ showBar(this.getEnergy()) + "\n Ma santé est a " + this.getHealth() + " sur 8             "
+				+ showBar(this.getHealth()));
+	}
+/**
+ * Unicorn cant have cleanliness at false
+ */
 	public void setCleanliness(boolean cleanliness) {
 		this.cleanliness = cleanliness;
 		if (!this.isCleanliness()) {

@@ -17,27 +17,33 @@ public class MainScript {
 		System.out.println("2 licorne");
 		System.out.println("3 trolls ");
 		System.out.println("4 phenix ");
+		System.out.println("5 erik ");
 		switch (sc.nextInt()) {
 		case 1:
 			Dragon myDragon = new Dragon();
-			myDragon.asciiDragon();
+			myDragon.ascii();
 			createMenu(myDragon);
 			break;
 
 		case 2:
 			Licorne myLicorne = new Licorne();
-			myLicorne.asciiUnicorn();
+			myLicorne.ascii();
 			createMenu(myLicorne);
 			break;
-		case 3:			
+		case 3:
 			Trolls myTrolls = new Trolls();
-			myTrolls.asciiTrolls();
+			myTrolls.ascii();
 			createMenu(myTrolls);
 			break;
-		case 4:			
+		case 4:
 			Phoenix myPhenix = new Phoenix();
-			myPhenix.asciiPhoenix();
+			myPhenix.ascii();
 			createMenu(myPhenix);
+			break;
+		case 5:
+			Erik myErik = new Erik();
+			myErik.ascii();
+			createMenu(myErik);
 			break;
 		}
 	}
@@ -68,7 +74,11 @@ public class MainScript {
 				if (phoenix.getHealth() < 1 && phoenix.canResurect()) {
 					System.out.println("Votre " + phoenix.getName() + " est mort.");
 					System.out.println("Mais ... que ce passe t-il ?");
+
+					System.out
+							.println("  ,'\"`.\n" + " /     \\\r\n" + ":       :\r\n" + ":       :\r\n" + " `.___,'\n");
 					System.out.println("Votre phoenix renait de ces cendres avec 5 pv ");
+					phoenix.ascii();
 					phoenix.setResurect(false);
 					phoenix.resurect();
 				}
@@ -110,7 +120,8 @@ public class MainScript {
 	}
 
 	/**
-	 * print the menu, and return the choice of user 
+	 * print the menu, and return the choice of user
+	 * 
 	 * @param <T>
 	 * @param tamagotchi
 	 * @return
@@ -138,6 +149,8 @@ public class MainScript {
 
 		} else if (tamagotchi instanceof Trolls) {
 			System.out.println("13 aller taper des chose pour regen l'energy");
+		}else if (tamagotchi instanceof Erik) {
+			System.out.println("13 aller programmer");
 		}
 		System.out.println("quel action voulez vous faire ?");
 		Scanner sc = new Scanner(System.in);
@@ -226,6 +239,9 @@ public class MainScript {
 				Trolls myTrolls = (Trolls) t;
 				myTrolls.fightThings();
 				System.out.println("Gneuh taper !");
+			}else if (t instanceof Erik) {
+				Erik myErik = (Erik) t;
+				System.out.println(myErik.toProgram());
 			}
 			break;
 
