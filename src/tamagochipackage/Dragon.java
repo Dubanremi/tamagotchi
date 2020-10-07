@@ -29,12 +29,29 @@ public class Dragon extends Animals {
 		return (super.getAppearance() + appearance);
 
 	}
+	/**
+	 * for the dragon, he can have 15 of stats, so we need to adjust the showBar function
+	 */
+	public String showBar(int valeursStats) {
+		return ("|||||||||||||||".substring(0, valeursStats) + "***************".substring(valeursStats, 15));
+	}
 	
+	/**
+	 * verify if the health don't exceed 15
+	 */
+	public void setHealth(int health) {
+		super.setHealth(health);
+		if (this.getHealth() > 14) {
+			this.health=15;
+		}
+
+	}
 	/**
 	 * public function specific to dragon for regen health
 	 */
 	public void eatFire() {
 		this.setHealth(this.getHealth()+1);
 	}
+	
 
 }

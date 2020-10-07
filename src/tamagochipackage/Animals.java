@@ -12,8 +12,8 @@ public class Animals {
 	private int hunger = 10;
 	private int wc = 0;
 	private int energy = 10;
-	private int humor;// 1=pas content,2= content,3= soulagé
-	private int health = 10;
+	private int humor;// 1=pas content,2= content,3= soulagÃ©
+	protected int health = 10;
 	boolean masque = true;
 	boolean cleanliness = true;
 
@@ -113,7 +113,7 @@ public class Animals {
 	public void setHunger(int hunger) {
 		this.hunger = hunger;
 		if (this.getHunger() == 0) {
-			System.out.println("Je suis littéralement mort de faim .");
+			System.out.println("Je suis littÃ©ralement mort de faim .");
 			this.setHealth(0);
 		} else if (this.getHunger() < 3) {
 			System.out.println("J'ai faim ");
@@ -150,7 +150,7 @@ public class Animals {
 	public void setEnergy(int energy) {
 		this.energy = energy;
 		if (this.getEnergy() < 4) {
-			System.out.println("Attention, je suis fatigué");
+			System.out.println("Attention, je suis fatiguÃ©");
 		}
 	}
 
@@ -244,8 +244,8 @@ public class Animals {
 	}
 
 	/**
-	 * Method for go to toilet, down wc to 0, set humor to "soulagé" call to my call
-	 * to my method doAction who add -1 to energy,- 1 to hunger, and 0 to wc
+	 * Method for go to toilet, down wc to 0, set humor to "soulagÃ©" call to my
+	 * call to my method doAction who add -1 to energy,- 1 to hunger, and 0 to wc
 	 *
 	 */
 	public void goToToilet() {
@@ -314,17 +314,18 @@ public class Animals {
 
 	}
 
-/**
- * make a baby with the same characteristic of parent
- * @param <Generic> class generic
- * @param baby : object already created, with a particular type
- */
+	/**
+	 * make a baby with the same characteristic of parent
+	 * 
+	 * @param <Generic> class generic
+	 * @param baby      : object already created, with a particular type
+	 */
 	public <Generic extends Animals> void makeBaby(Generic baby) {
 		baby.setName("baby");
 		baby.setColor(this.getColor());
 		baby.setHairColor(this.getHairColor());
 		baby.setHeight(this.getHeight());
-		System.out.println("\n Voila votre bébé :");
+		System.out.println("\n Voila votre bÃ©bÃ© :");
 		System.out.println(baby.getAppearance());
 	}
 
@@ -358,7 +359,7 @@ public class Animals {
 		doAction(-1, -1, +1);
 		if (this.isMasque()) {// if we have masque
 			this.setMasque(false);// remove a masque
-			this.setHumor(3);// and set humor to "soulagé"
+			this.setHumor(3);// and set humor to "soulagÃ©"
 		} else {// else put on masque, and set humor to not happy
 			this.setMasque(true);
 			this.setHumor(1);
@@ -432,11 +433,24 @@ public class Animals {
 	 * @return the stats in a string
 	 */
 	public String showStats() {
-		return (this.getAppearance() + "\n Mon estomac est remplie a " + this.getHunger() + " sur 10"
-				+ "\n Ma barre de wc est a " + this.getWc() + "\n Ma barre d'energie est a " + this.getEnergy()
-				+ " sur 10" + "\n Ma santé est a " + this.getHealth() + " sur 10"
+		return (this.getAppearance() + "\n Mon estomac est remplie a " + this.getHunger() + " sur 10  "
+				+ showBar(this.getHunger()) + "\n Ma barre de wc est a " + this.getWc() + "               "
+				+ showBar(this.getWc()) + "\n Ma barre d'energie est a " + this.getEnergy() + " sur 10  "
+				+ showBar(this.getEnergy()) + "\n Ma santé est a " + this.getHealth() + " sur 10            "
+				+ showBar(this.getHealth())
 				+ (this.isMasque() == true ? "\n Je porte un masque" : "\n Je ne porte pas de masque :)")
 				+ (this.isCleanliness() == true ? "\n Je suis propre" : "\n Je suis sale "));
+	}
+
+	/**
+	 * show a bar of a stats specific cut the first bar at the value, and start the
+	 * second bar at the value of the stat
+	 * 
+	 * @param valeursStats
+	 * @return my bar, in type string
+	 */
+	public String showBar(int valueStats) {
+		return ("||||||||||".substring(0, valueStats) + "**********".substring(valueStats, 10));
 	}
 
 }
