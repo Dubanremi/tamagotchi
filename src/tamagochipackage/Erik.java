@@ -8,6 +8,10 @@ public class Erik extends Animals {
 		this.setHealth(11);
 		this.setHunger(11);
 		this.setEnergy(11);
+		this.setName("Erik");
+		this.setHairColor("Roux");
+		this.setColor("Orange");
+		this.setLifeTime(1);
 	}
 
 	@Override
@@ -70,7 +74,7 @@ public class Erik extends Animals {
 
 	@Override
 	public String showBar(int valeursStats) {
-		return ("|||||||||||".substring(0, valeursStats) + "***********".substring(valeursStats, 12));
+		return ("|||||||||||".substring(0, valeursStats) + "***********".substring(valeursStats, 11));
 	}
 
 	/**
@@ -96,10 +100,6 @@ public class Erik extends Animals {
 	 * we cannot name erik, or decid his color
 	 */
 	public void askInfo() {
-		this.setName("Erik");
-		this.setHairColor("Roux");
-		this.setColor("Orange");
-		this.setLifeTime(1);
 	}
 
 	/**
