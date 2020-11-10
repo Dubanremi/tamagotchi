@@ -21,7 +21,7 @@ public class MainScript {
 	public static void chooseAnimal(Scanner sc)
 	{
 
-		System.out.println("quel type de tamagotchi voulez vous ? ");
+		System.out.println("quel type de tamagotchi voulez-vous ? ");
 		System.out.println("1 dragon ");
 		System.out.println("2 licorne");
 		System.out.println("3 trolls ");
@@ -84,7 +84,7 @@ public class MainScript {
 														// specific at my class phoenix
 				if (phoenix.getHealth() < 1 && phoenix.canResurect()) {
 					System.out.println("Votre " + phoenix.getName() + " est mort.");
-					System.out.println("Mais ... que ce passe t-il ?");
+					System.out.println("Mais ... que se passe-t-il ?");
 
 					System.out
 							.println("  ,'\"`.\n" + " /     \\\r\n" + ":       :\r\n" + ":       :\r\n" + " `.___,'\n");
@@ -127,7 +127,7 @@ public static <T extends Animals> void die(T tamagotchi) {
 		if (tamagotchi.getEnergy() < 1) {// if my animals dont have energy, he's gonna sleep, and use one lifetime
 			// etc
 
-			System.out.println("je suis trop fatigué, je vais dormir ");
+			System.out.println("Je suis trop fatigué, je vais dormir ");
 			System.out.println("Bonne nuit !");
 			System.out.println("...");
 			System.out.println("...");
@@ -170,14 +170,14 @@ public static <T extends Animals> void die(T tamagotchi) {
 		System.out.println("12 pour afficher stats");
 		if (tamagotchi instanceof Dragon) { // test of function specific at a children class, add a choice
 			// for the user in function of the type of my opbject
-			System.out.println("13 ce regenerer avec du feu");
+			System.out.println("13 se regenerer avec du feu");
 
 		} else if (tamagotchi instanceof Trolls) {
 			System.out.println("13 aller taper des chose pour regen l'energy");
 		}else if (tamagotchi instanceof Erik) {
 			System.out.println("13 aller programmer");
 		}
-		System.out.println("quel action voulez vous faire ?");
+		System.out.println("Quelle action voulez-vous faire ?");
 		Scanner sc = new Scanner(System.in);
 		int action = sc.nextInt();
 		return action;
@@ -261,13 +261,13 @@ public static <T extends Animals> void die(T tamagotchi) {
 		case 2:
 			t.eat();
 			System.out.println("");
-			System.out.println("J'ai bien manger");
+			System.out.println("J'ai bien mangé");
 			System.out.println("");
 			break;
 		case 3:
 			t.goToToilet();
 			System.out.println("");
-			System.out.println("J'ai bien etait au toilettes");
+			System.out.println("J'ai bien été au toilettes");
 			System.out.println("");
 
 			break;
@@ -286,7 +286,7 @@ public static <T extends Animals> void die(T tamagotchi) {
 		case 7:
 			t.hangOut();
 			System.out.println("");
-			System.out.println("j'ai apprecier ma sortie avec mes amis");
+			System.out.println("j'ai apprecié ma sortie avec mes amis");
 			System.out.println("");
 			break;
 		case 8:
@@ -310,7 +310,7 @@ public static <T extends Animals> void die(T tamagotchi) {
 		case 11:
 			t.smoke();
 			System.out.println("");
-			System.out.println("J'ai fumer");
+			System.out.println("J'ai fumé");
 			System.out.println("");
 			break;
 		case 12:

@@ -182,7 +182,7 @@ public abstract class Animals {
 	public void setEnergy(int energy) {
 		this.energy = energy;
 		if (this.getEnergy() < 4) {
-			System.out.println("Attention, je suis fatiguÃ©");
+			System.out.println("Attention, je suis fatigué");
 		}
 	}
 
@@ -302,7 +302,7 @@ public abstract class Animals {
 	 * -1 to energy,- 1 to hunger, and 1 to wc
 	 */
 	public void dyeHair() {
-		System.out.println("quelle nouvelle couleurs voulez vous ?");
+		System.out.println("quelle nouvelle couleur voulez-vous ?");
 		String newHairColor = sc.next();
 		this.setHairColor(newHairColor);
 		doAction(-1, -1, 1);
@@ -413,7 +413,7 @@ public abstract class Animals {
 	 */
 	public String getAppearance() {
 		return ("Bonjour, je suis " + this.name + "\n Je suis de couleur " + this.color + "\n Je mesure " + this.height
-				+ " metres");
+				+ " m");
 	}
 
 	/**
